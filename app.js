@@ -1,32 +1,25 @@
 var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
+var handlebar = require('express-handlebars');
+
+var routes = require('./routes/index');
+
 var app = express();
-var router = express.Router();
-var fs = require('fs');
-var path = __dirname;
-app.use(express.static('public'));
 
-app.use('/static', express.static(path + 'public'));
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', handlebar());
+app.set('view engine', 'handlebars');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-router.use(function (req,res,next) {
-    console.log("/" + req.method);
-    next();
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', routes);
 
-router.get("/index",function(req,res){
-    res.sendFile(path + "/public/views/index.html");
+app.set('port', (process.env.PORT || 3000));
 
-});
-
-router.post("/pass",function(req,res){
-    res.send("success");
-
-});
-
-app.use("/",router);
-
-
-app.listen(3000,function(){
-    console.log("Live at Port 3000");
+app.listen(app.get('port'), function(){
+    console.log('Server started on port '+app.get('port'));
 });

@@ -17,6 +17,10 @@
   "homepage": "https://github.com/PranathiB/npmwebsite#readme",
   "description": "",
   "dependencies": {
-    "express": "latest"
+    "body-parser": "^1.17.2",
+    "consolidate": "^0.14.5",
+    "express": "latest",
+    "express-handlebars": "^3.0.0",
+    "mustache": "^2.3.0"
   }
 }
