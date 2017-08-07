@@ -2,3 +2,6 @@
 MyFirstWebsite.iml
 node_modules
 package-lock.json
+model/
+public/.DS_Store
+public/js/.DS_Store

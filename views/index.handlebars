@@ -5,34 +5,16 @@
     <title>Welcome to our world</title>
     <link href="/css/MyStyle.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-    <script src="../js/Analyser.js"></script>
 
 </head>
 <body>
 <p id="textM">Enter the Magic Word</p>
-
-<!--<div id="magicZone">-->
-
-    <!--<br />-->
-    <!--<input id=pass type="password" name="password" required placeholder="..."-->
-           <!--onkeypress="if(event.keyCode === 13) magicWordAnalyser(document.getElementById('pass').value)"-->
-        <!--onclick="clearErrorMessage()" >-->
-
-    <!--<img id=arrow src="../images/arrow.png"-->
-         <!--alt="Click Me!!"-->
-         <!--onclick="magicWordAnalyser(document.getElementById('pass').value)"  />-->
-    <!--</div>-->
-<!--<div id="errorZone"> </div>-->
-<!--<div id="success"></div>-->
-<form method="post">
+<form action = "/" method="post" >
     <div id="magicZone">
         <br />
         <input id=pass name="password" required placeholder="..." onclick="clearErrorMessage() " autocomplete="off"/>
-        <input id=arrow type="submit" value="" />
-        <!--<input id=arrow type="image" src="../images/arrow.png" class="btTxt submit" />-->
+        <input id=arrow type="image" src="/images/arrow.png" class="submit" />
     </div>
-    <div id="errorZone"> </div>
-    <div id="success"></div>
 </form>
 </body>
 <script src="../js/RandomBGImage.js"></script>
