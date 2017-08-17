@@ -5,7 +5,6 @@ router.get("/",function(req,res){
     res.render("index");
 
 });
-
 router.verifyPassPhrase = function (req, res) {
     req.checkBody('password', 'Password is required').notEmpty();
     var pass = req.body.password;
@@ -18,37 +17,27 @@ router.verifyPassPhrase = function (req, res) {
 };
 router.post("/", router.verifyPassPhrase);
 
-
-router.yesOrNo = function (req, res) {
-    req.checkBody('YesOrNo', 'Enter your answer').notEmpty();
-    var answer1 = req.body.YesOrNo;
-    if(answer1==="yes" || answer1 === "ya"){
-        res.render("quizSteps1");
-    }
-    else{
-        res.render("success");
-    }
-
-};
-router.post("/quiz-steps", router.yesOrNo);
-router.get("/quiz-steps", function (req, res) {
-    res.render("quiz-steps")
+router.get("/a", function (req, res, next) {
+    res.render("start");
 });
 
-router.meetLocation = function (req, res) {
-    req.checkBody('answer', 'Enter your answer').notEmpty();
-    var ans = req.body.answer;
-    if(ans==="a"){
-        res.render("quizSteps2");
-    }
-    else{
-        res.render("quizSteps1");
-    }
-};
-router.post("/quizSteps1", router.meetLocation);
-router.get("/quizSteps1", function (req, res) {
-    res.render("quizSteps1")
+router.get("/hello?:b", function (req, res, next) {
+    console.log(req.params.answer);
+    res.render(req.params.answer);
 });
+
+router.post("/hello", function (req,res,next) {
+    res.render(req.body.answer, function(err, handlebars) {
+        if (err) {
+            if (err.message.indexOf('Failed to lookup view') !== -1) {
+                return res.render('sorry');
+            }
+            throw err;
+        }
+        res.render(req.body.answer);
+    });
+});
+
 
 
 module.exports = router;

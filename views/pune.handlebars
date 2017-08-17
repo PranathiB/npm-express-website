@@ -8,14 +8,15 @@
 
 </head>
 <body>
-<div id="magicZone">
-    Question 1
-    <form action = "/quizSteps1" method="post" >
-        <div id="magicZone">
-            <br />
-            <input id=answer name="answer" required placeholder="..." onclick="clearErrorMessage() " autocomplete="off"/>
+<div id="quizblock">
+What is your favourite color?
+    <form action = "/hello" method="post" >
+        <div id="answer">
+            <br/>
+            <input id=answerfield name="answer" required placeholder="..." onclick="clearErrorMessage() " autocomplete="off"/>
         </div>
     </form>
 </div>
 </body>
+<script src="../js/RandomBGColor.js"></script>
 </html>
